@@ -27,6 +27,7 @@ export function CarpoolDetails({ register, setValue, errors, control }) {
         <label className="form-control w-full max-w-xs">
           <div className="label">
             <span className="label-text">Event address: </span>
+            
           </div>
           <AddressAutocomplete setValue={setValue} />
           {errors.address?.message && <br />}

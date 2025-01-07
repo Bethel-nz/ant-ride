@@ -15,6 +15,7 @@ import { useSearchParams } from 'next/navigation'
 import { toast } from "sonner";
 import Dialog, { CopyElement } from "@/components/dialog";
 
+
 export default function Join() {
   const dialog = useRef(null);
   const [edit, setEdit] = useState("");
@@ -61,6 +62,7 @@ export default function Join() {
       seats_available: 0,
       remove: false,
       edit_code: "aaaaa",
+      max_detour_time: 30,
     },
   });
 

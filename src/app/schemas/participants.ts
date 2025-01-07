@@ -10,6 +10,10 @@ export const schema = yup.object().shape({
   address: yup.string().max(100).required(),
   can_pickup: yup.boolean().required(),
   seats_available: yup.number().max(20).required(),
+  max_detour_time: yup
+    .number()
+    .oneOf([30, 45, 60], "Please select a valid time limit")
+    .required("Please select maximum added time to your trip"),
 });
 
 export interface IParticipantDetails {
@@ -22,4 +26,5 @@ export interface IParticipantDetails {
   address: string;
   can_pickup: boolean;
   seats_available: number;
+  max_detour_time: number;
 }

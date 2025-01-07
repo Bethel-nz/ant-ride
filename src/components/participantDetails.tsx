@@ -1,7 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 
-import { AddressAutocomplete } from "./addressAutocomplete";
+// import { AddressAutocomplete } from "./addressAutocomplete";
 import PhoneInput from "./phoneInput";
+import { AddressAutocomplete } from "./addressAutocomplete";
 
 import Link from "next/link";
 
@@ -70,9 +71,11 @@ export function ParticipantDetails({
       </div>
 
       <label className="form-control w-full max-w-xs">
-        <div className="label">
-          <span className="label-text">Address: </span>
+        <div className="label flex flex-col text-left">
+          <span className="label-text ">Address: </span>
+        
         </div>
+        {/* Commented this cause i couldn't get google map to work */}
         <AddressAutocomplete setValue={setValue} />
         {errors.address?.message && <br />}
         <p className="text-red-500">{errors.address?.message}</p>
@@ -98,6 +101,23 @@ export function ParticipantDetails({
         />
         {errors.seats_available?.message && <br />}
         <p className="text-red-500">{errors.seats_available?.message}</p>
+      </label>
+      <label className="form-control w-full max-w-xs">
+        <div className="label">
+          <span className="label-text">Maximum added time to your trip:</span>
+        </div>
+        <select 
+          className="select select-bordered w-full max-w-xs"
+          {...register("max_detour_time")}
+          disabled={disabled}
+        >
+          <option value={30}>30 minutes</option>
+          <option value={45}>45 minutes</option>
+          <option value={60}>60 minutes</option>
+        </select>
+        {errors.max_detour_time?.message && (
+          <p className="text-red-500">{errors.max_detour_time.message}</p>
+        )}
       </label>
       <div className="flex items-center max-w-64 gap-4">
         <input type="checkbox" defaultChecked className="checkbox checkbox-info" />
